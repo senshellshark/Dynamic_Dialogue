@@ -51,6 +51,10 @@ func _ready():
 	punctuation_regex.compile("[.!?;]")
 	
 func set_text(t: String):
+	for child in $Container.get_children():
+		child.queue_free()
+	read_index = 0
+	is_complete = false
 	text = t
 	var letters = text
 	var letter_index = 0
@@ -58,7 +62,8 @@ func set_text(t: String):
 	var space_delay: bool = false
 	for letter in letters:
 		if letter == " ":
-			computed_delays[-2] += seconds_per_space
+			if computed_delays.size() > 1:
+				computed_delays[-2] += seconds_per_space
 			continue
 		var delay = seconds_per_other_characters
 		if letters_regex.search(letter):
