@@ -69,7 +69,8 @@ func set_text(t: String):
 		if letters_regex.search(letter):
 			delay = seconds_per_letter
 		if punctuation_regex.search(letter):
-			computed_delays[-1] += seconds_per_punctuation
+			if computed_delays.size() > 0:
+				computed_delays[-1] += seconds_per_punctuation
 		computed_delays.append(delay)
 		var letter_label = Label.new()
 		letter_label.text = letter
