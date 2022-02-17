@@ -32,8 +32,8 @@ export var word_space: float = 0
 ## Additional space between each line of text
 export var line_space: float = 0
 
-export var seconds_per_letter: float = 0.008
-export var seconds_per_space: float = 0.02
+export var seconds_per_letter: float = 0.02
+export var seconds_per_space: float = 0.05
 export var seconds_per_punctuation: float = 0.5
 export var seconds_per_other_characters: float = 0.05
 
@@ -47,7 +47,7 @@ var letters_regex: RegEx = RegEx.new()
 var punctuation_regex: RegEx = RegEx.new()
 
 func _ready():
-	letters_regex.compile("[:alpha:]")
+	letters_regex.compile("[[:alpha:]]")
 	punctuation_regex.compile("[.!?;]")
 	
 func set_text(t: String):
